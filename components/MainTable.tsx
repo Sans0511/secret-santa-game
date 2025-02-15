@@ -11,14 +11,14 @@ import { fileInputDataValidation } from "@/utils/validation";
 export default function MainTable() {
   const [lastYearData, setLastYearData] = useState<Santa[]>([]);
   const [tableData, setTableData] = useState<Santa[]>([]);
-  const [loading, setLoading] = useState(false);
+
   const [conformDownload, setConformDownload] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [tableLabel, setTableLabe] = useState("Previous Year Santa");
 
   const handleCsvDownload = async () => {
     setConformDownload(false);
-    const response = await downloadCsv(tableData, tableLabel);
+    await downloadCsv(tableData, tableLabel);
   };
 
   const handleFileChange = async (
@@ -89,29 +89,19 @@ export default function MainTable() {
                   </tr>
                 </thead>
                 <tbody>
-                  {!loading ? (
-                    tableData.map((item, index) => (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td className="items-center">{item.Employee_Name}</td>
-                        <td className="items-center">
-                          {item.Employee_EmailID}
-                        </td>
-                        <td className="items-center">
-                          {item?.Secret_Child_Name || "-"}
-                        </td>
-                        <td className="items-center">
-                          {item?.Secret_Child_EmailID || "-"}
-                        </td>
-                      </tr>
-                    ))
-                  ) : (
-                    <tr>
-                      <td colSpan={5} className="text-center py-4">
-                        Loading...
+                  {tableData.map((item, index) => (
+                    <tr key={index}>
+                      <td>{index + 1}</td>
+                      <td className="items-center">{item.Employee_Name}</td>
+                      <td className="items-center">{item.Employee_EmailID}</td>
+                      <td className="items-center">
+                        {item?.Secret_Child_Name || "-"}
+                      </td>
+                      <td className="items-center">
+                        {item?.Secret_Child_EmailID || "-"}
                       </td>
                     </tr>
-                  )}
+                  ))}
                 </tbody>
               </table>
               <div className="flex flex-co justify-center items-center mt-4">
