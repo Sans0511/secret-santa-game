@@ -15,7 +15,7 @@ export const convertCsvToArray = async (file: File): Promise<Santa[]> => {
   });
 };
 
-export const downloadCsv = async (data: any[], year: string) => {
+export const downloadCsv = async (data: any[], fileName: string) => {
   if (!Array.isArray(data) || data.length === 0) {
     console.error("Invalid or empty data provided.");
     return;
@@ -48,7 +48,7 @@ export const downloadCsv = async (data: any[], year: string) => {
   if (link.download !== undefined) {
     const url = URL.createObjectURL(blob);
     link.setAttribute("href", url);
-    link.setAttribute("download", `secret_santa_game_${year}.csv`);
+    link.setAttribute("download", `secret_santa_game_${fileName}.csv`);
     link.style.visibility = "hidden";
     document.body.appendChild(link);
     link.click();
@@ -57,3 +57,24 @@ export const downloadCsv = async (data: any[], year: string) => {
     console.error("Download attribute not supported.");
   }
 };
+
+export const sampleCSVFormat = [
+  {
+    Employee_Name: "John Doe",
+    Employee_EmailID: "john.doe@example.com",
+    Secret_Child_Name: "Jane Smith",
+    Secret_Child_EmailID: "jane.smith@example.com",
+  },
+  {
+    Employee_Name: "Alice Johnson",
+    Employee_EmailID: "alice.johnson@example.com",
+    Secret_Child_Name: "Bob Williams",
+    Secret_Child_EmailID: "bob.williams@example.com",
+  },
+  {
+    Employee_Name: "Eve Brown",
+    Employee_EmailID: "eve.brown@example.com",
+    Secret_Child_Name: "Charlie Davis",
+    Secret_Child_EmailID: "charlie.davis@example.com",
+  },
+];

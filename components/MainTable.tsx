@@ -7,6 +7,7 @@ import { downloadCsv } from "@/utils/csvHandler";
 import { ConformModal } from "@/components/ConformModal";
 import { Santa } from "@/utils/validation";
 import { fileInputDataValidation } from "@/utils/validation";
+import { sampleCSVFormat } from "@/utils/csvHandler";
 
 export default function MainTable() {
   const [lastYearData, setLastYearData] = useState<Santa[]>([]);
@@ -50,6 +51,10 @@ export default function MainTable() {
     console.log({ geneartedDate });
   };
 
+  const handleOnHandleSampleDownload = async () => {
+    await downloadCsv(sampleCSVFormat, "Sample_format");
+  };
+
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="flex flex-col w-full items-center justify-around">
@@ -64,15 +69,25 @@ export default function MainTable() {
                 <label className=" flex justify-center items-center font-semibold text-center">
                   Upload last year Data
                 </label>
-
-                <input
-                  type="file"
-                  accept=".csv"
-                  className="file-input w-full file-input-sm mt-5"
-                  onChange={handleFileChange}
-                />
-
-                <p className=" text-red-400 my-3">{errorMessage}</p>
+                <div className="flex flex-row justify-center items-center w-fit ">
+                  <div className="flex items-center border-2 border-black ">
+                    <input
+                      type="file"
+                      accept=".csv"
+                      className="file-input file-input-sm"
+                      onChange={handleFileChange}
+                    />
+                  </div>
+                  <a
+                    className="flex link link-accent w-full justify-center items-center px-5 rounded-md"
+                    onClick={handleOnHandleSampleDownload}
+                  >
+                    Sample Csv download
+                  </a>
+                </div>
+                <p className=" text-red-400 my-3 flex items-cente">
+                  {errorMessage}
+                </p>
               </div>
             </div>
           </div>
