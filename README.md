@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Secret Santa Game
+
+This is a Secret Santa game application built with Next.js and deployed on Vercel.
+
+## Features
+
+- **CSV Upload:** Allows users to upload a CSV file containing employee data for the Secret Santa game.
+- **Data Validation:** Validates the uploaded CSV data against a Zod schema to ensure data integrity.
+- **Secret Santa Generation:** Generates Secret Santa assignments based on the uploaded data.
+- **CSV Download:** Allows users to download the Secret Santa assignments as a CSV file.
+- **Sample CSV Download:** Provides a sample CSV file for users to understand the required format.
+- **Error Handling:** Displays error messages for invalid CSV data or other issues.
+- **Responsive Design:** The application is designed to be responsive and work on various screen sizes.
+- **Confirmation Modal:** A confirmation modal is used before downloading the generated CSV file.
+
+## Technologies Used
+
+- **Next.js:** React framework for building server-rendered applications.
+- **TypeScript:** Static type checker for JavaScript.
+- **Tailwind CSS:** Utility-first CSS framework.
+- **Zod:** Schema declaration and validation library.
+- **CSV Parser (custom):** Custom utility for parsing CSV files in the browser.
+- **Vercel:** Platform for deployment and hosting.
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Node.js (version 18 or later recommended)
+- npm or yarn
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1.  Clone the repository:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+    ```bash
+    git clone <repository_url>
+    ```
 
-## Learn More
+2.  Navigate to the project directory:
 
-To learn more about Next.js, take a look at the following resources:
+    ```bash
+    cd <project_directory>
+    ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3.  Install dependencies:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+    ```bash
+    npm install
+    # or
+    yarn install
+    ```
 
-## Deploy on Vercel
+### Development
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1.  Start the development server:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+    ```bash
+    npm run dev
+    # or
+    yarn dev
+    ```
+
+2.  Open your browser and navigate to `http://localhost:3000`.
+
+### Building and Deployment
+
+1.  Build the application:
+
+    ```bash
+    npm run build
+    # or
+    yarn build
+    ```
+
+2.  Export the application (if needed for static hosting):
+
+    ```bash
+    npm run export
+    # or
+    yarn export
+    ```
+
+3.  Deploy to Vercel (or your preferred hosting platform). If you are using vercel, simply push the code to a github repo, and connect that repo to vercel.
+
+## Project Structure
